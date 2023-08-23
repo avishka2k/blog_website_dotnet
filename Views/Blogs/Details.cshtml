@@ -1,0 +1,83 @@
+﻿@model blogsite_asp.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Blog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.blog_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blog_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.blog_category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blog_category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.publish_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.publish_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.publish_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.publish_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.publish_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.publish_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.blog_tags)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blog_tags)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.blog_content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blog_content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.blog_imageurl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blog_imageurl)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

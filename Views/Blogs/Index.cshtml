@@ -1,0 +1,155 @@
+﻿@model IEnumerable<blogsite_asp.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .table-bordered > :not(caption) > * > * {
+        border-width: 0;
+    }
+
+    table.dataTable > thead .sorting:after,
+    table.dataTable > thead .sorting_asc:after,
+    table.dataTable > thead .sorting_asc_disabled:after,
+    table.dataTable > thead .sorting_desc:after,
+    table.dataTable > thead .sorting_desc_disabled:after {
+        content: none !important;
+    }
+
+    table.dataTable > thead .sorting:before,
+    table.dataTable > thead .sorting_asc:before,
+    table.dataTable > thead .sorting_asc_disabled:before,
+    table.dataTable > thead .sorting_desc:before,
+    table.dataTable > thead .sorting_desc_disabled:before {
+        content: none !important;
+    }
+</style>
+
+
+<link href="~/Content/table/vendor/fonts/circular-std/style.css" rel="stylesheet">
+<link rel="stylesheet" href="~/Content/table/vendor/fonts/fontawesome/css/fontawesome-all.css">
+<link rel="stylesheet" type="text/css" href="~/Content/table/vendor/datatables/css/dataTables.bootstrap4.css">
+<link rel="stylesheet" type="text/css" href="~/Content/table/vendor/datatables/css/buttons.bootstrap4.css">
+<link rel="stylesheet" type="text/css" href="~/Content/table/vendor/datatables/css/select.bootstrap4.css">
+<link rel="stylesheet" type="text/css" href="~/Content/table/vendor/datatables/css/fixedHeader.bootstrap4.css">
+
+
+<div class="container-fluid">
+
+    <!-- Page Header -->
+    <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+        <h1 class="page-title fw-semibold fs-18 mb-0">Blog List</h1>
+        <div class="ms-md-1 ms-0">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Blog List</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header Close -->
+
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card custom-card">
+                <div class="card-header justify-content-between">
+                    <div class="card-title">
+                        All Blogs List
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 align-items-center">
+                        <a href=@Url.Action("Create", "Blogs") class="btn btn-primary btn-wave btn-sm">
+                            <i class="ri-add-line me-1 align-middle"></i>New Blog
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered first">
+                            <thead>
+                                <tr>
+                                    <th scope="row" class="ps-4"><input class="form-check-input" type="checkbox" id="checkboxNoLabeljob1" value="" aria-label="..."></th>
+                                    <th scope="col">Blog Title</th>
+                                    <th scope="col">Owner</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Views</th>
+                                    <th scope="col">Posted Date</th>
+                                    <th scope="col">Last Update</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var blog in Model)
+                                {
+                                    <tr>
+                                        <td class="ps-4"><input class="form-check-input" type="checkbox" id="checkboxNoLabeljob22" value="" aria-label="..."></td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <span class="avatar avatar-md avatar-rounded bg-primary bg-opacity-10"><svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"><path fill="var(--primary-color)" d="M21.46777,2.3252A1.00007,1.00007,0,0,0,20.73,2H3.27a1.00039,1.00039,0,0,0-.99609,1.08887l1.52,17a.99944.99944,0,0,0,.72851.87451l7.2002,2A.99628.99628,0,0,0,11.99023,23a1.01206,1.01206,0,0,0,.26709-.03613l7.21973-2a1.00055,1.00055,0,0,0,.729-.875l1.52-17A1,1,0,0,0,21.46777,2.3252Zm-3.19238,16.896L11.99072,20.9624,5.72461,19.22168,4.36328,4H19.63672ZM7.81982,13h6.895l-.32714,3.271-2.56788.917L8.65625,16.05811a1.00017,1.00017,0,1,0-.67285,1.88378l3.5,1.25a1.00291,1.00291,0,0,0,.67285,0l3.5-1.25a1.00044,1.00044,0,0,0,.65869-.84228l.5-5A1.00064,1.00064,0,0,0,15.81982,11H8.72461L8.4248,8h7.895a1,1,0,0,0,0-2h-9a1.00064,1.00064,0,0,0-.99511,1.09961l.5,5A1.00012,1.00012,0,0,0,7.81982,13Z"></path></svg></span>
+                                                <div class="ms-2">
+                                                    <p class="fw-semibold mb-0 d-flex align-items-center"><a href="job-details.html">@Html.DisplayFor(modelItem => blog.blog_title)</a></p>
+                                                    <p class="fs-12 text-muted mb-0">@Html.DisplayFor(modelItem => blog.blog_category)</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span class="avatar avatar-sm p-1 me-1 bg-light avatar-rounded">
+                                                    <img src="~/Content/images/company-logos/8.png" alt="">
+                                                </span>
+                                                <a href="javascript:void(0);" class="fw-semibold mb-0">@Html.DisplayFor(modelItem => blog.blog_owner)</a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            Development
+                                        </td>
+                                        <td>@(ViewBag.ViewsCount ?? 0)</td>
+                                        <td>@Html.DisplayFor(modelItem => blog.publish_time)</td>
+                                        <td>Oct 12 2022</td>
+                                        <td><span class="badge bg-primary-transparent"><i class="bi bi-clock me-1"></i>Nov 12 2022</span></td>
+                                        <td>
+                                            <a href=@Url.Action("Details", "Blogs" , new { id=blog.Id }) class="btn btn-icon btn-sm btn-primary-light btn-wave waves-effect waves-light">
+                                                <i class="ri-eye-line"></i>
+                                            </a>
+                                            <a href=@Url.Action("Edit", "Blogs" , new { id=blog.Id }) class="btn btn-icon btn-sm btn-info-light btn-wave waves-effect waves-light">
+                                                <i class="ri-edit-line"></i>
+                                            </a>
+                                            <a href=@Url.Action("Delete", "Blogs" , new { id=blog.Id }) class="btn btn-icon btn-sm btn-danger-light btn-wave waves-effect waves-light">
+                                                <i class="ri-delete-bin-line"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/table/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script src="~/Content/table/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="~/Content/table/vendor/slimscroll/jquery.slimscroll.js"></script>
+<script src="~/Content/table/vendor/multi-select/js/jquery.multi-select.js"></script>
+<script src="~/Content/table/libs/js/main-js.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="~/Content/table/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="~/Content/table/vendor/datatables/js/buttons.bootstrap4.min.js"></script>
+<script src="~/Content/table/vendor/datatables/js/data-table.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
